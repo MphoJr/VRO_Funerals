@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ClientDashboard = async () => {
-  const token = localStorage.getItem("token");
+const ClientDashboard = () => {
+  const [dashboardData, setDashboardData] = useState(null);
 
-  try {
-    const res = await fetch("http://localhost:5000/client/dashboard", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  useEffect(() => {
+    const fetchDashboard = async () => {
+      const token = localStorage.getItem("token");
 
-    const data = await res.json();
-    console.log(data);
-  } catch (err) {
-    console.error("Error fetching dashboard:", err);
-  }
-};
-export default function ClientDashboard() {
+      try {
+        const res = await fetch("http://localhost:5000/client/dashboard", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await res.json();
+        setDashboardData(data);
+        console.log(data);
+      } catch (err) {
+        console.error("Error fetching dashboard:", err);
+      }
+    };
+
+    fetchDashboard();
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="max-w-6xl mx-auto p-8">
@@ -62,4 +70,6 @@ export default function ClientDashboard() {
       </div>
     </div>
   );
-}
+};
+
+export default ClientDashboard;
