@@ -20,7 +20,6 @@ export default function LandingPage() {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white px-4 sm:px-6">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4">
