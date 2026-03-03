@@ -14,18 +14,15 @@ export default function LandingPage() {
     <div className="landing-page bg-gray-100">
       {/* Banner Section */}
       <div
-        className="relative h-40 sm:h-[50vh] md:h-[60vh] bg-center bg-no-repeat bg-cover"
-        style={{
-          backgroundImage: `url(${bannerImage})`,
-          backgroundAttachment: "fixed",
-        }}
+        className="relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] bg-center bg-no-repeat bg-cover md:bg-fixed"
+        style={{ backgroundImage: `url(${bannerImage})` }}
       >
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <div className="text-center text-white px-4 sm:px-6">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4">
+          <div className="text-center text-white px-4 sm:px-6 py-6">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4">
               WE GUARANTEE <br /> CLIENT SATISFACTION
             </h1>
-            <h4 className="text-base sm:text-xl md:text-2xl font-light leading-relaxed">
+            <h4 className="text-sm sm:text-lg md:text-2xl font-light leading-relaxed">
               GRIEF IS THE PRICE WE PAY FOR LOVE. <br />
               LOVE IS ETERNAL <br />
               WITH THE BURIAL PLAN — THE FINAL GOODBYE <br />
