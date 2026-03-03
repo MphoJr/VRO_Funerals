@@ -4,33 +4,32 @@ export default function ContactPage() {
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
-      <div className="w-full h-48 bg-red-700 flex items-center justify-center text-white text-5xl font-bold">
+      <div className="w-full h-40 sm:h-48 bg-red-700 flex items-center justify-center text-white text-3xl sm:text-5xl font-bold text-center">
         Contact Us
       </div>
 
       {/* Contact Section */}
-      <div className="max-w-5xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12">
         {/* Contact Info */}
         <div>
-          <h2 className="text-4xl font-semibold text-red-700 mb-4">
+          <h2 className="text-2xl sm:text-4xl font-semibold text-red-700 mb-4">
             Get in Touch
           </h2>
-          <p className="text-gray-700 mb-6 text-xl">
+          <p className="text-gray-700 mb-6 text-base sm:text-xl">
             We’re here to answer your questions and provide support. Reach out
             to us through any of the following channels:
           </p>
-          <ul className="space-y-4 text-gray-700">
+          <ul className="space-y-4 text-gray-700 text-base sm:text-lg">
             <li>
-              <span className="font-semibold text-xl">Phone:</span> +27 12 345
-              6789
+              <span className="font-semibold">Phone:</span> +27 12 345 6789
             </li>
             <li>
-              <span className="font-semibold text-xl">Email:</span>{" "}
+              <span className="font-semibold">Email:</span>{" "}
               info@vrofunerals.co.za
             </li>
             <li>
-              <span className="font-semibold text-xl">Address:</span> Thavhani
-              Mall, Limpopo, South Africa
+              <span className="font-semibold">Address:</span> Thavhani Mall,
+              Limpopo, South Africa
             </li>
           </ul>
 
@@ -40,7 +39,7 @@ export default function ContactPage() {
               href="https://www.facebook.com/vroFuneralsAndTombstones?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800 transition"
             >
               <i className="fab fa-facebook-f"></i>
             </a>
@@ -48,7 +47,7 @@ export default function ContactPage() {
               href="https://www.instagram.com/vro_funeral_parlour?igsh=OXFkZDNpcXpraGIx"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800 transition"
             >
               <i className="fab fa-instagram"></i>
             </a>
@@ -56,7 +55,7 @@ export default function ContactPage() {
               href="https://www.tiktok.com/@@vro_funerals?_t=ZS-8ybDJY2aMm9&_r=1"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-red-700 text-white hover:bg-red-800 transition"
             >
               <i className="fab fa-tiktok"></i>
             </a>
@@ -64,36 +63,48 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-4xl font-semibold text-red-700 mb-6">
-            Send Us a Messagen
+        <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-4xl font-semibold text-red-700 mb-6">
+            Send Us a Message
           </h2>
           <form className="space-y-4">
             <div>
-              <label className="block text-lg font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-base sm:text-lg font-medium text-gray-700"
+              >
                 Name
               </label>
               <input
+                id="name"
                 type="text"
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="Your Name"
               />
             </div>
             <div>
-              <label className="block text-lg font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-base sm:text-lg font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
+                id="email"
                 type="email"
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="you@example.com"
               />
             </div>
             <div>
-              <label className="block text-lg font-medium text-gray-700">
+              <label
+                htmlFor="message"
+                className="block text-base sm:text-lg font-medium text-gray-700"
+              >
                 Message
               </label>
               <textarea
+                id="message"
                 rows="4"
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="Write your message..."

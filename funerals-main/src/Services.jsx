@@ -47,22 +47,32 @@ export default function Services() {
   ];
 
   return (
-    <div className="px-8 py-12 bg-gray-100">
-      <h2 className="text-6xl font-bold text-center mb-10">Our Services</h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="px-4 sm:px-8 py-12 bg-gray-100">
+      <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-10">
+        Our Services
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:bg-red-700 hover:shadow-xl"
+            className="relative group bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
-            <img
-              src={service.image}
-              alt={service.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6 text-center transition-colors duration-300 hover:text-white">
-              <h3 className="text-4xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-600 text-xl leading-relaxed  hover:text-white">
+            {/* Image with overlay */}
+            <div className="relative">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-red-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            {/* Text content */}
+            <div className="p-4 sm:p-6 text-center">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-red-700 group-hover:text-white transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-white transition-colors duration-300">
                 {service.description}
               </p>
             </div>

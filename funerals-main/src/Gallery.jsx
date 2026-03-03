@@ -4,18 +4,19 @@ export default function Gallery() {
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
-      <div className="w-full h-48 bg-red-700 flex items-center justify-center text-white text-3xl font-bold mb-12">
+      <div className="w-full h-40 sm:h-48 bg-red-700 flex items-center justify-center text-white text-2xl sm:text-3xl font-bold mb-10">
         Video Gallery
       </div>
 
       {/* Gallery Grid */}
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Example: Local video (place file in /public/videos/) */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Local video */}
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <video
             controls
-            className="w-full h-64 object-cover"
-            src="./videos/funeral.mp4"
+            className="w-full h-56 sm:h-64 object-cover"
+            src="/videos/funeral.mp4"
+            title="Funeral Service"
           ></video>
           <div className="p-4">
             <h3 className="text-lg font-semibold text-red-700">
@@ -27,12 +28,12 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Example: YouTube embed */}
+        {/* YouTube embed */}
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <iframe
-            className="w-full h-64"
-            src="./videos/vclass.mp4"
-            title="YouTube video"
+            className="w-full h-56 sm:h-64"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            title="Memorial Tribute"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -44,12 +45,12 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Example: Vimeo embed */}
+        {/* Vimeo embed */}
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <iframe
-            className="w-full h-64"
-            src="./videos/convoy.mp4"
-            title="Vimeo video"
+            className="w-full h-56 sm:h-64"
+            src="https://player.vimeo.com/video/YOUR_VIDEO_ID"
+            title="Celebration of Life"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           ></iframe>

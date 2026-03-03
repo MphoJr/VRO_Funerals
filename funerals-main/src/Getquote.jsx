@@ -5,21 +5,25 @@ export default function GetQuote() {
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
       <div
-        className="w-full h-52 bg-red-700 bg-cover bg-center flex items-center justify-center text-white text-3xl font-bold mb-12"
+        className="w-full h-40 sm:h-52 bg-red-700 bg-cover bg-center flex items-center justify-center text-white text-2xl sm:text-3xl font-bold mb-10"
         style={{ backgroundImage: "url('your-image-url.jpg')" }}
       >
         Get a Quote
       </div>
 
       {/* Form Container */}
-      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
+      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6 sm:p-8">
         <form method="post" className="space-y-6">
           {/* Name */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Name
             </label>
             <input
+              id="name"
               type="text"
               placeholder="Enter your name here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
@@ -28,10 +32,14 @@ export default function GetQuote() {
 
           {/* Surname */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="surname"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Surname
             </label>
             <input
+              id="surname"
               type="text"
               placeholder="Enter your surname here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
@@ -40,10 +48,16 @@ export default function GetQuote() {
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="title"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Title
             </label>
-            <select className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700">
+            <select
+              id="title"
+              className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
+            >
               <option value="">Select</option>
               <option value="Miss">Miss</option>
               <option value="Ms">Ms</option>
@@ -55,10 +69,16 @@ export default function GetQuote() {
 
           {/* Plan */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="plan"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Plan
             </label>
-            <select className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700">
+            <select
+              id="plan"
+              className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
+            >
               <option value="">Select</option>
               <option value="Plan A">Plan A</option>
               <option value="Plan B">Plan B</option>
@@ -68,10 +88,14 @@ export default function GetQuote() {
 
           {/* Cell Number */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="cell"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Cell Number
             </label>
             <input
+              id="cell"
               type="text"
               placeholder="Enter your Cell Number here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
@@ -80,10 +104,14 @@ export default function GetQuote() {
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Email
             </label>
             <input
+              id="email"
               type="email"
               placeholder="Enter your Email here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
@@ -92,10 +120,14 @@ export default function GetQuote() {
 
           {/* Message */}
           <div>
-            <label className="block text-sm font-semibold uppercase tracking-wide mb-2">
+            <label
+              htmlFor="message"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
               Message
             </label>
             <textarea
+              id="message"
               rows="6"
               placeholder="Enter your message here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
@@ -103,7 +135,7 @@ export default function GetQuote() {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-end">
+          <div className="flex justify-center sm:justify-end">
             <button
               type="submit"
               className="bg-red-700 text-white px-6 py-2 rounded-md uppercase tracking-wide hover:bg-red-800 transition"
