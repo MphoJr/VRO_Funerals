@@ -86,32 +86,32 @@ export default function PlansPage() {
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
       <div
-        className="w-full h-52 bg-red-700 bg-cover bg-center flex items-center justify-center text-white text-3xl font-bold mb-8"
+        className="w-full h-32 sm:h-52 bg-red-700 bg-cover bg-center flex items-center justify-center text-white text-2xl sm:text-3xl font-bold mb-8"
         style={{ backgroundImage: "url('your-image-url.jpg')" }}
       >
         PLANS
       </div>
 
       {/* Plans Section */}
-      <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto px-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-6 mb-16">
         {plans.map((plan, idx) => (
           <div
             key={idx}
-            className={`rounded-lg shadow-md p-6 w-72 text-center transition-transform duration-200 hover:-translate-y-1 ${
+            className={`rounded-lg shadow-md p-6 text-center transition-transform duration-200 hover:-translate-y-1 ${
               plan.featured
                 ? "bg-red-700 text-white scale-105"
                 : "bg-white text-gray-800"
             }`}
           >
-            <h2 className="text-5xl font-bold mb-2">{plan.name}</h2>
+            <h2 className="text-2xl sm:text-4xl font-bold mb-2">{plan.name}</h2>
             <p
-              className={`text-xl font-semibold mb-4 ${
+              className={`text-lg sm:text-xl font-semibold mb-4 ${
                 plan.featured ? "text-white" : "text-gray-700"
               }`}
             >
               {plan.price}
             </p>
-            <ul className="space-y-2 text-lg">
+            <ul className="space-y-2 text-sm sm:text-base">
               {plan.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
               ))}
@@ -121,22 +121,24 @@ export default function PlansPage() {
       </div>
 
       {/* Bank Details Section */}
-      <div className="bg-white max-w-4xl mx-auto rounded-lg shadow-md p-8 mb-16">
+      <div className="bg-white max-w-4xl mx-auto rounded-lg shadow-md p-6 sm:p-8 mb-16">
         <div className="text-center mb-6">
-          <h1 className="text-5xl font-bold text-red-700">BANK DETAILS</h1>
-          <p className="text-gray-600">MONTHLY REMINDER</p>
-          <p className="text-gray-600">
+          <h1 className="text-2xl sm:text-5xl font-bold text-red-700">
+            BANK DETAILS
+          </h1>
+          <p className="text-gray-600 text-sm sm:text-base">MONTHLY REMINDER</p>
+          <p className="text-gray-600 text-sm sm:text-base">
             REF: Surname and Initials with the first 4 ID number
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {banks.map((bank, idx) => (
-            <div key={idx} className="border rounded-lg p-6 text-left">
-              <h2 className="text-2xl font-semibold mb-4 text-red-700">
+            <div key={idx} className="border rounded-lg p-4 sm:p-6 text-left">
+              <h2 className="text-lg sm:text-2xl font-semibold mb-4 text-red-700">
                 {bank.title}
               </h2>
               {Object.entries(bank.details).map(([label, value], i) => (
-                <p key={i} className="text-lg mb-2">
+                <p key={i} className="text-sm sm:text-lg mb-2">
                   <span className="font-semibold">{label}:</span> {value}
                 </p>
               ))}
