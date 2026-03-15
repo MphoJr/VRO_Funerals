@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("");
+
+    try {
+      const res = await fetch("http://localhost:4000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus(data.error || "Failed to send message.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("Server error. Please try again later.");
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
@@ -67,7 +103,12 @@ export default function ContactPage() {
           <h2 className="text-2xl sm:text-4xl font-semibold text-red-700 mb-6">
             Send Us a Message
           </h2>
-          <form className="space-y-4">
+          {status && (
+            <div className="mb-4 text-center text-sm font-medium text-red-700">
+              {status}
+            </div>
+          )}
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="name"
@@ -78,6 +119,8 @@ export default function ContactPage() {
               <input
                 id="name"
                 type="text"
+                value={formData.name}
+                onChange={handleChange}
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="Your Name"
               />
@@ -92,8 +135,26 @@ export default function ContactPage() {
               <input
                 id="email"
                 type="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-base sm:text-lg font-medium text-gray-700"
+              >
+                Phone (optional)
+              </label>
+              <input
+                id="phone"
+                type="text"
+                value={formData.phone}
+                onChange={handleChange}
+                className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
+                placeholder="+27..."
               />
             </div>
             <div>
@@ -106,6 +167,8 @@ export default function ContactPage() {
               <textarea
                 id="message"
                 rows="4"
+                value={formData.message}
+                onChange={handleChange}
                 className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
                 placeholder="Write your message..."
               ></textarea>

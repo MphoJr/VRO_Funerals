@@ -11,10 +11,11 @@ export default function LoginPage() {
   };
 
   const handleLogin = async (role) => {
+    // Match backend endpoints: /auth/client/login and /auth/admin/login
     const endpoint =
       role === "client"
-        ? "http://localhost:5000/client/login"
-        : "http://localhost:5000/admin/login";
+        ? "http://localhost:4000/auth/client/login"
+        : "http://localhost:4000/auth/admin/login";
 
     try {
       const res = await fetch(endpoint, {
@@ -25,7 +26,9 @@ export default function LoginPage() {
 
       const data = await res.json();
       if (res.ok) {
+        // Save JWT token
         localStorage.setItem("token", data.token);
+        // Navigate to dashboards
         navigate(role === "client" ? "/client-dashboard" : "/admin-dashboard");
       } else {
         setError(data.error || "Login failed");

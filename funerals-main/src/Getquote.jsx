@@ -1,6 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function GetQuote() {
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    title: "",
+    plan: "",
+    cell: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:4000/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${formData.title} ${formData.name} ${formData.surname}`,
+          contact: `${formData.cell} | ${formData.email}`,
+          message: `${formData.plan} - ${formData.message}`,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Quote submitted successfully!");
+        setFormData({
+          name: "",
+          surname: "",
+          title: "",
+          plan: "",
+          cell: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        alert("Failed to submit quote.");
+      }
+    } catch (error) {
+      console.error("Error submitting quote:", error);
+      alert("Something went wrong.");
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
@@ -13,7 +61,7 @@ export default function GetQuote() {
 
       {/* Form Container */}
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6 sm:p-8">
-        <form method="post" className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name */}
           <div>
             <label
@@ -25,6 +73,8 @@ export default function GetQuote() {
             <input
               id="name"
               type="text"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Enter your name here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             />
@@ -41,6 +91,8 @@ export default function GetQuote() {
             <input
               id="surname"
               type="text"
+              value={formData.surname}
+              onChange={handleChange}
               placeholder="Enter your surname here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             />
@@ -56,6 +108,8 @@ export default function GetQuote() {
             </label>
             <select
               id="title"
+              value={formData.title}
+              onChange={handleChange}
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             >
               <option value="">Select</option>
@@ -77,6 +131,8 @@ export default function GetQuote() {
             </label>
             <select
               id="plan"
+              value={formData.plan}
+              onChange={handleChange}
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             >
               <option value="">Select</option>
@@ -97,6 +153,8 @@ export default function GetQuote() {
             <input
               id="cell"
               type="text"
+              value={formData.cell}
+              onChange={handleChange}
               placeholder="Enter your Cell Number here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             />
@@ -113,6 +171,8 @@ export default function GetQuote() {
             <input
               id="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your Email here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             />
@@ -129,6 +189,8 @@ export default function GetQuote() {
             <textarea
               id="message"
               rows="6"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Enter your message here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             ></textarea>
