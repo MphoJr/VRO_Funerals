@@ -141,22 +141,7 @@ export default function ContactPage() {
                 placeholder="you@example.com"
               />
             </div>
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-base sm:text-lg font-medium text-gray-700"
-              >
-                Phone (optional)
-              </label>
-              <input
-                id="phone"
-                type="text"
-                value={formData.phone}
-                onChange={handleChange}
-                className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:ring-red-700 focus:border-red-700"
-                placeholder="+27..."
-              />
-            </div>
+
             <div>
               <label
                 htmlFor="message"
