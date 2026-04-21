@@ -18,7 +18,7 @@ export default function ContactPage() {
     setStatus("");
 
     try {
-      const res = await fetch("http://localhost:4000/contact", {
+      const res = await fetch("http://localhost:4000/Contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

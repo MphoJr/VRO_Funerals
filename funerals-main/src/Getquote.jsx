@@ -19,7 +19,7 @@ export default function GetQuote() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:4000/quotes", {
+      const response = await fetch("http://localhost:4000/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
