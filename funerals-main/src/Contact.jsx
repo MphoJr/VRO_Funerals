@@ -4,7 +4,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -18,7 +17,7 @@ export default function ContactPage() {
     setStatus("");
 
     try {
-      const res = await fetch("http://localhost:4000/Contact", {
+      const res = await fetch("http://localhost:4000/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -27,7 +26,7 @@ export default function ContactPage() {
       const data = await res.json();
       if (res.ok) {
         setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({ name: "", email: "", message: "" });
       } else {
         setStatus(data.error || "Failed to send message.");
       }

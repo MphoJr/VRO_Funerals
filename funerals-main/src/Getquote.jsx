@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 export default function GetQuote() {
   const [formData, setFormData] = useState({
+    title: "",
     name: "",
     surname: "",
-    title: "",
     plan: "",
     cell: "",
     email: "",
@@ -23,18 +23,22 @@ export default function GetQuote() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: `${formData.title} ${formData.name} ${formData.surname}`,
-          contact: `${formData.cell} | ${formData.email}`,
-          message: `${formData.plan} - ${formData.message}`,
+          title: formData.title,
+          name: formData.name,
+          surname: formData.surname,
+          plan: formData.plan,
+          cell: formData.cell,
+          email: formData.email,
+          message: formData.message,
         }),
       });
 
       if (response.ok) {
         alert("Quote submitted successfully!");
         setFormData({
+          title: "",
           name: "",
           surname: "",
-          title: "",
           plan: "",
           cell: "",
           email: "",
@@ -62,6 +66,29 @@ export default function GetQuote() {
       {/* Form Container */}
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Title */}
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-semibold uppercase tracking-wide mb-2"
+            >
+              Title
+            </label>
+            <select
+              id="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
+            >
+              <option value="">Select</option>
+              <option value="Miss">Miss</option>
+              <option value="Ms">Ms</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Mr">Mr</option>
+              <option value="Dr">Dr</option>
+            </select>
+          </div>
+
           {/* Name */}
           <div>
             <label
@@ -96,29 +123,6 @@ export default function GetQuote() {
               placeholder="Enter your surname here"
               className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
             />
-          </div>
-
-          {/* Title */}
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-semibold uppercase tracking-wide mb-2"
-            >
-              Title
-            </label>
-            <select
-              id="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="w-full border-2 border-red-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-700"
-            >
-              <option value="">Select</option>
-              <option value="Miss">Miss</option>
-              <option value="Ms">Ms</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Mr">Mr</option>
-              <option value="Dr">Dr</option>
-            </select>
           </div>
 
           {/* Plan */}
