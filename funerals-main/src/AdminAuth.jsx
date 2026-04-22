@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function AdminAuth() {
+export default function AdminAuth({ onLoginSuccess }) {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate(); // 👈 now defined
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -26,13 +28,15 @@ export default function AdminAuth() {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        onLoginSuccess(); // update parent state
-        navigate("/admin-dashboard"); // 👈 redirect here
+        if (onLoginSuccess) {
+          onLoginSuccess(); // ✅ now passed from LoginPage
+        }
+        navigate("/admin/dashboard"); // ✅ redirect after login
       } else {
         alert(data.error || "Login failed");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Admin login/register error:", err);
       alert("Server error");
     }
   };

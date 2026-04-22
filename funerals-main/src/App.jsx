@@ -8,7 +8,7 @@ import GetQuotePage from "./Getquote";
 import LoginPage from "./Login";
 import RegisterPage from "./Register";
 import Gallery from "./Gallery";
-import ProtectedRoute from "./components/ProjectedRoutes"; // ✅ check spelling here
+import ProtectedRoute from "./components/ProtectedRoutes"; // ✅ check spelling here
 import ClientDashboard from "./ClientDashboard";
 import AdminDashboard from "./AdminDashboard";
 
@@ -28,7 +28,7 @@ export default function App() {
 
         {/* Protected routes */}
         <Route
-          path="/client-dashboard"
+          path="/client/dashboard"
           element={
             <ProtectedRoute>
               <ClientDashboard />
@@ -36,7 +36,7 @@ export default function App() {
           }
         />
         <Route
-          path="/admin-dashboard"
+          path="/admin/dashboard"
           element={
             <ProtectedRoute>
               <AdminDashboard />
