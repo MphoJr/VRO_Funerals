@@ -25,14 +25,15 @@ export default function AdminAuth() {
 
       const data = await response.json();
       if (response.ok) {
-        alert(isLogin ? "Admin logged in!" : "Admin registered!");
-        localStorage.setItem("token", data.token); // Save JWT
+        localStorage.setItem("token", data.token);
+        onLoginSuccess(); // update parent state
+        navigate("/admin-dashboard"); // 👈 redirect here
       } else {
-        alert(data.error || "Failed");
+        alert(data.error || "Login failed");
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong");
+      alert("Server error");
     }
   };
 
