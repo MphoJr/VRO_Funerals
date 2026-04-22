@@ -28,18 +28,19 @@ export default function App() {
 
         {/* Protected routes */}
         <Route
-          path="/client/dashboard"
+          path="/admin/dashboard"
           element={
-            <ProtectedRoute>
-              <ClientDashboard />
+            <ProtectedRoute requiredRole="admin">
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />
+
         <Route
-          path="/admin/dashboard"
+          path="/client/dashboard"
           element={
-            <ProtectedRoute>
-              <AdminDashboard />
+            <ProtectedRoute requiredRole="client">
+              <ClientDashboard />
             </ProtectedRoute>
           }
         />
