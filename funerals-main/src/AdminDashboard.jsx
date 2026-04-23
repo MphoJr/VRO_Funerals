@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClientRegistration from "./ClientRegistration";
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState("quotes");
+  const [activeTab, setActiveTab] = useState("quote");
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
   };
 
   useEffect(() => {
-    if (activeTab === "quotes") fetchData("quotes");
+    if (activeTab === "quote") fetchData("quote");
     if (activeTab === "claims") fetchData("claims");
     if (activeTab === "contact") fetchData("contact");
     if (activeTab === "clients") fetchData("clients");
@@ -85,9 +85,9 @@ export default function AdminDashboard() {
       {/* Tabs */}
       <div className="flex gap-4 mb-6 flex-wrap">
         <button
-          onClick={() => setActiveTab("quotes")}
+          onClick={() => setActiveTab("quote")}
           className={`px-4 py-2 rounded-md ${
-            activeTab === "quotes" ? "bg-red-700 text-white" : "bg-gray-200"
+            activeTab === "quote" ? "bg-red-700 text-white" : "bg-gray-200"
           }`}
         >
           Quotes
@@ -148,10 +148,15 @@ export default function AdminDashboard() {
                         <th className="p-2 text-left">Created At</th>
                         <th className="p-2 text-left">Actions</th>
                       </>
-                    ) : activeTab === "quotes" ? (
+                    ) : activeTab === "quote" ? (
                       <>
+                        <th className="p-2 text-left">ID</th>
+                        <th className="p-2 text-left">Title</th>
                         <th className="p-2 text-left">Name</th>
-                        <th className="p-2 text-left">Contact</th>
+                        <th className="p-2 text-left">Surname</th>
+                        <th className="p-2 text-left">Plan</th>
+                        <th className="p-2 text-left">Cell</th>
+                        <th className="p-2 text-left">Email</th>
                         <th className="p-2 text-left">Message</th>
                         <th className="p-2 text-left">Date</th>
                       </>
@@ -160,6 +165,13 @@ export default function AdminDashboard() {
                         <th className="p-2 text-left">Member</th>
                         <th className="p-2 text-left">Description</th>
                         <th className="p-2 text-left">Status</th>
+                        <th className="p-2 text-left">Date</th>
+                      </>
+                    ) : activeTab === "contact" ? (
+                      <>
+                        <th className="p-2 text-left">Name</th>
+                        <th className="p-2 text-left">Email</th>
+                        <th className="p-2 text-left">Message</th>
                         <th className="p-2 text-left">Date</th>
                       </>
                     ) : (
@@ -202,10 +214,15 @@ export default function AdminDashboard() {
                             </button>
                           </td>
                         </>
-                      ) : activeTab === "quotes" ? (
+                      ) : activeTab === "quote" ? (
                         <>
+                          <td className="p-2">{item.id}</td>
+                          <td className="p-s2">{item.title}</td>
                           <td className="p-2">{item.name}</td>
-                          <td className="p-2">{item.contact}</td>
+                          <td className="p-2">{item.surname}</td>
+                          <td className="p-2">{item.plan}</td>
+                          <td className="p-2">{item.cell}</td>
+                          <td className="p-2">{item.email}</td>
                           <td className="p-2">{item.message}</td>
                           <td className="p-2">
                             {new Date(item.createdAt).toLocaleString()}
@@ -216,6 +233,15 @@ export default function AdminDashboard() {
                           <td className="p-2">{item.member?.name}</td>
                           <td className="p-2">{item.description}</td>
                           <td className="p-2">{item.status}</td>
+                          <td className="p-2">
+                            {new Date(item.createdAt).toLocaleString()}
+                          </td>
+                        </>
+                      ) : activeTab === "contact" ? (
+                        <>
+                          <td className="p-2">{item.name}</td>
+                          <td className="p-2">{item.email}</td>
+                          <td className="p-2">{item.message}</td>
                           <td className="p-2">
                             {new Date(item.createdAt).toLocaleString()}
                           </td>
