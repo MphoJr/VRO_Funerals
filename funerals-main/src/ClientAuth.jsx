@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function ClientAuth() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+export default function ClientAuth({ onLoginSuccess }) {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -9,7 +14,6 @@ export default function ClientAuth() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch("http://localhost:4000/auth/client/login", {
         method: "POST",
@@ -19,14 +23,19 @@ export default function ClientAuth() {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Client logged in!");
-        localStorage.setItem("token", data.token); // Save JWT
+        localStorage.setItem("token", data.token);
+
+        if (onLoginSuccess) {
+          onLoginSuccess(); // update parent state
+        }
+
+        navigate("/client/dashboard"); // 👈 redirect here
       } else {
-        alert(data.error || "Failed");
+        alert(data.error || "Login failed");
       }
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
+      console.error("Client login error:", err);
+      alert("Server error");
     }
   };
 
