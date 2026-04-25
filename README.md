@@ -39,7 +39,7 @@ The system provides dashboards for both **admins** and **clients**, enabling sec
 
 ### Frontend
 ```bash
-cd funerals-mains
+cd funerals-main
 npm install
 npm run dev
 ```
