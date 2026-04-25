@@ -37,8 +37,23 @@ The system provides dashboards for both **admins** and **clients**, enabling sec
 
 ## ⚙️ Installation & Setup
 
-### Backend
+### Frontend
 ```bash
 cd funerals-backend
 npm install
-npm start
+npm run dev
+```
+🔑 Authentication
+• 	Admins log in via 
+• 	Clients log in via 
+• 	JWT tokens are stored in  and sent with each request ()
+
+Next Improvements
+• 	Add email notifications for claims and quotes
+• 	Improve UI with responsive design
+• 	Add unit and integration tests
+• 	Dockerize backend and frontend for deployment
+
+👤 Author
+Developed by Mpho
+Junior Software Developer | React, ASP.NET MVC, Node.js, Python, SQL/PostgreSQL
