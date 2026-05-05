@@ -29,16 +29,16 @@ export default function ClientDashboard() {
   };
 
   useEffect(() => {
-    if (activeTab === "claims") fetchData("client/claims", setClaims);
-    if (activeTab === "beneficiaries")
-      fetchData("client/beneficiaries", setBeneficiaries);
-    if (activeTab === "profile") fetchData("client/profile", setProfile);
+    if (activeTab === "claims") fetchData("clients/claims", setClaims);
+    if (activeTab === "members") fetchData("clients/members", setBeneficiaries);
+    fetchData("clients/members", setBeneficiaries);
+    if (activeTab === "profile") fetchData("clients/profile", setProfile);
   }, [activeTab]);
 
   // Add new claim
   const handleAddClaim = async (description) => {
     try {
-      const res = await fetch("http://localhost:4000/client/claims", {
+      const res = await fetch("http://localhost:4000/clients/claims", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function ClientDashboard() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:4000/client/beneficiaries", {
+      const res = await fetch("http://localhost:4000/clients/members", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,17 +87,14 @@ export default function ClientDashboard() {
 
   const handleEditBeneficiary = async (id, newName) => {
     try {
-      const res = await fetch(
-        `http://localhost:4000/client/beneficiaries/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ name: newName }),
+      const res = await fetch(`http://localhost:4000/clients/members/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      );
+        body: JSON.stringify({ name: newName }),
+      });
       const result = await res.json();
       if (res.ok) {
         setBeneficiaries(beneficiaries.map((b) => (b.id === id ? result : b)));
@@ -112,13 +109,10 @@ export default function ClientDashboard() {
 
   const handleDeleteBeneficiary = async (id) => {
     try {
-      const res = await fetch(
-        `http://localhost:4000/client/beneficiaries/${id}`,
-        {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
+      const res = await fetch(`http://localhost:4000/clients/members/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (res.ok) {
         setBeneficiaries(beneficiaries.filter((b) => b.id !== id));
       } else {
@@ -134,7 +128,7 @@ export default function ClientDashboard() {
   // Update profile
   const handleUpdateProfile = async (updatedProfile) => {
     try {
-      const res = await fetch("http://localhost:4000/client/profile", {
+      const res = await fetch("http://localhost:4000/clients/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
