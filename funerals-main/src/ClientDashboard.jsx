@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function ClientDashboard() {
   const [activeTab, setActiveTab] = useState("claims");
   const [claims, setClaims] = useState([]);
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [profile, setProfile] = useState({});
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   // Fetch data depending on tab
@@ -183,14 +183,14 @@ export default function ClientDashboard() {
           <>
             <h2 className="text-xl font-bold mb-4">My Claims</h2>
             <button
-              onClick={() => handleAddClaim(prompt("Enter claim description:"))}
+              onClick={() => navigate("/claims/new")} // 👈 redirect to form route
               className="bg-green-600 text-white px-4 py-2 rounded mb-4"
             >
               Add Claim
             </button>
             <ul>
               {claims.map((c) => (
-                <li key={c.id} className="border-b p-2">
+                <li key={c.claimId} className="border-b p-2">
                   {c.description} — {c.status}
                 </li>
               ))}
