@@ -202,10 +202,8 @@ export default function ClientDashboard() {
           <>
             <h2 className="text-xl font-bold mb-4">My Beneficiaries</h2>
             <button
-              onClick={() =>
-                handleAddBeneficiary(prompt("Name:"), prompt("Relation:"))
-              }
-              className="bg-green-600 text-white px-4 py-2 rounded mb-4"
+              onClick={() => navigate("/beneficiaries/new")} // 👈 route to form
+              className="bg-blue-600 text-white px-4 py-2 rounded mb-4"
             >
               Add Beneficiary
             </button>

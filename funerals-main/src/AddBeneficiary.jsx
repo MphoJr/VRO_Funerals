@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 👈 import navigation
 
 export default function AddBeneficiariesForm() {
   const [members, setMembers] = useState([
@@ -6,6 +7,7 @@ export default function AddBeneficiariesForm() {
   ]);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate(); // 👈 initialize navigation
 
   const handleChange = (index, field, value) => {
     const updated = [...members];
@@ -76,7 +78,11 @@ export default function AddBeneficiariesForm() {
       }
 
       setSuccess("Beneficiaries saved successfully!");
-      setMembers([{ name: "", surname: "", relation: "", idNumber: "" }]);
+
+      // 👇 redirect back to dashboard after 1 second
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
     } catch (err) {
       console.error("Error saving beneficiaries:", err);
       setError("Server error. Please try again later.");
@@ -86,6 +92,11 @@ export default function AddBeneficiariesForm() {
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
       <h2 className="text-xl font-bold mb-4 text-red-700">Add Beneficiaries</h2>
+
+      <p className="mb-4 text-gray-700">
+        You have added <span className="font-bold">{members.length}</span> of 13
+        beneficiaries.
+      </p>
 
       {error && <p className="text-red-600 mb-4">{error}</p>}
       {success && <p className="text-green-600 mb-4">{success}</p>}

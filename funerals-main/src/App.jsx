@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoutes"; // ✅ check spelling
 import ClientDashboard from "./ClientDashboard";
 import AdminDashboard from "./AdminDashboard";
 import ClaimsForm from "./ClaimsForm"; // ✅ new form component
+import AddBeneficiariesForm from "./AddBeneficiary"; // ✅ new form component
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/claims/new" element={<ClaimsForm />} />{" "}
+        <Route path="/beneficiaries/new" element={<AddBeneficiariesForm />} />
         {/* 👈 form route */}
         {/* Protected routes */}
         <Route
