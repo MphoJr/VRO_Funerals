@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
-export default function GetQuote() {
+import emailjs from "emailjs-com";
+
+export default function ContactUs() {
   const [formData, setFormData] = useState({
-    title: "",
     name: "",
-    surname: "",
-    plan: "",
-    cell: "",
     email: "",
     message: "",
   });
@@ -15,42 +13,30 @@ export default function GetQuote() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:4000/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: formData.title,
+    emailjs
+      .send(
+        "service_0ubrhco",
+        "template_rw0wtj3",
+        {
           name: formData.name,
-          surname: formData.surname,
-          plan: formData.plan,
-          cell: formData.cell,
           email: formData.email,
           message: formData.message,
-        }),
-      });
-
-      if (response.ok) {
-        alert("Quote submitted successfully!");
-        setFormData({
-          title: "",
-          name: "",
-          surname: "",
-          plan: "",
-          cell: "",
-          email: "",
-          message: "",
-        });
-      } else {
-        alert("Failed to submit quote.");
-      }
-    } catch (error) {
-      console.error("Error submitting quote:", error);
-      alert("Something went wrong.");
-    }
+        },
+        "ZVzyTt2kbl_4FBQWh",
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          alert("Failed to send message. Please try again.");
+        },
+      );
   };
 
   return (

@@ -1,41 +1,42 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
-export default function ContactPage() {
+export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus("");
 
-    try {
-      const res = await fetch("http://localhost:4000/contacts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus(data.error || "Failed to send message.");
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus("Server error. Please try again later.");
-    }
+    emailjs
+      .send(
+        "service_0ubrhco",
+        "template_idk7cj6",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "ZVzyTt2kbl_4FBQWh",
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          alert("Failed to send message. Please try again.");
+        },
+      );
   };
-
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
