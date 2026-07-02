@@ -2,9 +2,13 @@ import React, { useState } from "react";
 
 import emailjs from "emailjs-com";
 
-export default function ContactUs() {
+export default function GetQuote() {
   const [formData, setFormData] = useState({
     name: "",
+    surname: "",
+    title: "",
+    plan: "",
+    cell: "",
     email: "",
     message: "",
   });
@@ -21,20 +25,29 @@ export default function ContactUs() {
         "service_0ubrhco",
         "template_rw0wtj3",
         {
-          name: formData.name,
-          email: formData.email,
+          name: `${formData.title} ${formData.name} ${formData.surname}`,
+          contact: `${formData.cell} | ${formData.email}`,
+          plan: formData.plan,
           message: formData.message,
         },
         "ZVzyTt2kbl_4FBQWh",
       )
       .then(
         () => {
-          alert("Message sent successfully!");
-          setFormData({ name: "", email: "", message: "" });
+          alert("Quote submitted successfully!");
+          setFormData({
+            name: "",
+            surname: "",
+            title: "",
+            plan: "",
+            cell: "",
+            email: "",
+            message: "",
+          });
         },
         (error) => {
           console.error("EmailJS error:", error);
-          alert("Failed to send message. Please try again.");
+          alert("Failed to send quote. Please try again.");
         },
       );
   };
