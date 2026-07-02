@@ -20,17 +20,23 @@ export default function GetQuote() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Build template params dynamically so empty fields don't break
+    const templateParams = {
+      name: formData.name,
+      surname: formData.surname,
+      title: formData.title,
+      plan: formData.plan,
+      cell: formData.cell,
+      email: formData.email,
+      message: formData.message,
+    };
+
     emailjs
       .send(
         "service_0ubrhco",
-        "template_rw0wtj3",
-        {
-          name: `${formData.title} ${formData.name} ${formData.surname}`,
-          contact: `${formData.cell} | ${formData.email}`,
-          plan: formData.plan,
-          message: formData.message,
-        },
-        "ZVzyTt2kbl_4FBQWh",
+        "template_rw0wtj3", // 👈 template you created
+        templateParams,
+        "ZVzyTt2kbl_4FBQWh", // 👈 from EmailJS account
       )
       .then(
         () => {
@@ -51,7 +57,6 @@ export default function GetQuote() {
         },
       );
   };
-
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Banner */}
