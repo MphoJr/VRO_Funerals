@@ -32,7 +32,6 @@ export default function Header() {
               { to: "/", label: "Home" },
               { to: "/gallery", label: "Gallery" },
               { to: "/plans", label: "Plans" },
-              { to: "/services", label: "Services" },
               { to: "/contact", label: "Contact Us" },
               { to: "/get-quote", label: "Get A Quote" },
               { to: "/login", label: "Login" },

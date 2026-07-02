@@ -57,7 +57,7 @@ export default function ContactUs() {
           </p>
           <ul className="space-y-4 text-gray-700 text-base sm:text-lg">
             <li>
-              <span className="font-semibold">Phone:</span> +27 12 345 6789
+              <span className="font-semibold">Phone:</span> +27 79 088 9846
             </li>
             <li>
               <span className="font-semibold">Email:</span>{" "}
