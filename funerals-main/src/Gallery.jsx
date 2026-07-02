@@ -32,7 +32,7 @@ export default function Gallery() {
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <iframe
             className="w-full h-56 sm:h-64"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            src="/videos/convoy.mp4"
             title="Memorial Tribute"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -49,7 +49,7 @@ export default function Gallery() {
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           <iframe
             className="w-full h-56 sm:h-64"
-            src="https://player.vimeo.com/video/YOUR_VIDEO_ID"
+            src="/videos/vclass.mp4"
             title="Celebration of Life"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
