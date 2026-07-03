@@ -69,10 +69,10 @@ export default function Services() {
 
             {/* Text content */}
             <div className="p-4 sm:p-6 text-center">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-red-700 group-hover:text-white transition-colors duration-300">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-red-700 group-hover:text-black transition-colors duration-300">
                 {service.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-white transition-colors duration-300">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-black transition-colors duration-300">
                 {service.description}
               </p>
             </div>
