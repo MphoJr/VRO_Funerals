@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "./assets/logo.png"; //t
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-5">
+    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-xl sm:text-2xl font-bold text-red-700">
-          VRO Funeral Parlour
+        <div className="flex items-center space-x-3">
+          <img
+            src={logo}
+            alt="VRO Funeral Parlour Logo"
+            className="h-20 w-auto sm:h-16 md:h-20 object-contain"
+          />
+          <span className="text-xl sm:text-2xl font-bold text-red-700"></span>
         </div>
 
         {/* Hamburger Menu (Mobile) */}
