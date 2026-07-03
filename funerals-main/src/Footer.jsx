@@ -16,35 +16,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
-        <ul className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium">
-          <li>
-            <a href="/" className="hover:text-white transition">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/gallery" className="hover:text-white transition">
-              Gallery
-            </a>
-          </li>
-          <li>
-            <a href="/plans" className="hover:text-white transition">
-              Plans
-            </a>
-          </li>
-          <li>
-            <a href="/contact" className="hover:text-white transition">
-              Contact Us
-            </a>
-          </li>
-          <li>
-            <a href="/get-quote" className="hover:text-white transition">
-              Get A Quote
-            </a>
-          </li>
-        </ul>
-
         {/* Social Links */}
         <div className="flex gap-3 sm:gap-4">
           <a
