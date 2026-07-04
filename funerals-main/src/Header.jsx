@@ -40,6 +40,7 @@ export default function Header() {
               { to: "/plans", label: "Plans" },
               { to: "/contact", label: "Contact Us" },
               { to: "/get-quote", label: "Get A Quote" },
+              { to: "/login", label: "Login" },
             ].map((link) => (
               <li key={link.to}>
                 <NavLink
