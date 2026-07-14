@@ -165,6 +165,16 @@ export default function ContactUs() {
               Send Message
             </button>
           </form>
+          <div className="flex justify-center mt-10">
+            <a
+              href="https://wa.me/27790889846" // 👈 replace with your WhatsApp number in international format
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-green-500 text-white hover:bg-green-600 transition"
+            >
+              <i className="fab fa-whatsapp text-2xl"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
