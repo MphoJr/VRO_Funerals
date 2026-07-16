@@ -61,11 +61,7 @@ export default function ContactUs() {
             </li>
             <li>
               <span className="font-semibold">Email:</span>{" "}
-              info@vrofunerals.co.za
-            </li>
-            <li>
-              <span className="font-semibold">Address:</span> Thavhani Mall,
-              Limpopo, South Africa
+              Vrofunerals@gmail.com
             </li>
           </ul>
 
